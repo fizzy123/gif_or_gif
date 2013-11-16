@@ -1,0 +1,42 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% templatetag openbrace %}GIF{% templatetag closebrace %} OR {% templatetag openbrace %}GIF{% templatetag closebrace %}</title>
+</head>
+
+<body>
+    <div style="width: 50%;
+                text-align: center;
+                float: left;">
+        <form action="{% url 'gif:index' %}" method='POST'>
+        {% csrf_token %}
+            <input type='hidden' name='win_gif_name' value='{{gif1_name}}'>
+            <input type='hidden' name='lose_gif_name' value='{{gif2_name}}'>
+            <input type='image' src='/media/{{gif1_name}}'>
+        </form>
+    </div>
+    <div style="position: fixed;
+        left: 50%;
+        margin-left: -50px;
+        top: 130px;
+        float: inherit;
+        font-size: 100px;
+        font-family: 'Impact';">OR</div>
+    <div style="float: right;
+                text-align: center;
+                width: 50%;">
+        <form action="{% url 'gif:index' %}" method='POST'>
+            {% csrf_token %}
+            <input type='hidden' name='win_gif_name' value='{{gif2_name}}'>
+            <input type='hidden' name='lose_gif_name' value='{{gif1_name}}'>
+            <input type='image' src='/media/{{gif2_name}}'>
+        </form>
+    </div>
+    <div style="width: 100%;
+                float: right;
+                text-align: center;">
+        <a href="{% url 'gif:rankings' %}">Rankings</a>
+    </div>
+</body>

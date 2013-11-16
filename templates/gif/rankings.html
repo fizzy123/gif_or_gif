@@ -1,0 +1,16 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>RANKIGNS</title>
+</head>
+
+<body>
+    {% for gif in gifs %}
+    <div>
+        {{ forloop.counter }}.<a href="/media/{{ gif.image }}"><img src="/media/{{ gif.image }}"></a>
+    </div>
+    {% endfor %}
+    <div><a href="{% url 'gif:index' %}">CHOOSE MORE</a></div>
+</body>
